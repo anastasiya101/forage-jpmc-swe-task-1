@@ -1,0 +1,29 @@
+From d101d6bd2007b1c890ea683b561b839f956be04b Mon Sep 17 00:00:00 2001
+From: Anastasiya Bogoslovskaya
+ <94914136+anastasiya101@users.noreply.github.com>
+Date: Sat, 18 Mar 2023 21:30:53 +1100
+Subject: [PATCH] added prices
+
+---
+ client3.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/client3.py b/client3.py
+index 562997b..9664909 100644
+--- a/client3.py
++++ b/client3.py
+@@ -55,9 +55,10 @@ if __name__ == "__main__":
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
+-            price[stock] = price
++            prices[stock] = price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+         print("Ratio %s" % getRatio(price, price))
+-- 
+2.32.1 (Apple Git-133)
+
